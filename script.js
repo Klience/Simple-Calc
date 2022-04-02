@@ -5,8 +5,8 @@ let secondOperand = null;
 let firstOperator = null;
 let secondOperator = null;
 let displayValue = '';
-// const buttons = document.querySelector('button');
-const buttons = document.querySelectorAll('.operand');
+
+const buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
 
 function updateDisplay(displayValue){
@@ -15,9 +15,26 @@ function updateDisplay(displayValue){
 
 function buttonClick() {
   for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener('click', () => { if (buttons[i].classList.contains('operand')) {
-      getOperand(buttons[i].value);}
-  })
+    buttons[i].addEventListener('click', () => {
+      if (buttons[i].classList.contains('operand')) {
+        getOperand(buttons[i].value);}
+      else if (buttons[i].classList.contains('clear')) {
+        displayValue = '';
+        updateDisplay(DEFAULT_VALUE);
+      }
+      else if (buttons[i].classList.contains('operator')) {
+        console.log(buttons[i].value);
+      }
+      else if (buttons[i].classList.contains('sign')) {
+        console.log(buttons[i].value);
+      }
+      else if (buttons[i].classList.contains('percent')) {
+        console.log(buttons[i].value);
+      }
+      else if (buttons[i].classList.contains('equals')) {
+        console.log(buttons[i].value);
+      }
+    })
   }
 }
 
