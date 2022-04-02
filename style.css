@@ -22,13 +22,19 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
+  border-radius: 10px;
 }
 
 button {
   background-color: #eee;
   border: none;
+  border-radius: 10px;
 }
 
 #zero {
   grid-column: span 2;
+}
+
+.operator, .clear, .sign, .percent, .equals {
+  box-shadow: 1px 1px 2px 1px rgba(0, 0, 255, .2);
 }
