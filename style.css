@@ -9,17 +9,26 @@
 
 #grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
-  grid-template-rows: minmax(100px, auto) repeat(3, 100px);
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(100px, auto) repeat(5, 80px);
   gap: 5px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
 .display {
   grid-column: 1 / -1;
-  background-color: #b2b9b7;
+  background-color: #eee;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-end;
+}
+
+button {
+  background-color: #eee;
+  border: none;
+}
+
+#zero {
+  grid-column: span 2;
 }
