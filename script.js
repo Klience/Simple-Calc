@@ -1,52 +1,30 @@
-/*
-Operations:
-  add
-  subtract
-  multiply
-  divide
+const DEFAULT_VALUE = '0';
 
-Functions:
-  operate() -> perform 1 of 4 operations on numbers
-  display() -> display the result of a calculation
-*/
-
-// initial operator has to be null before choice is made
-// same for initial operand(s) that have to be zero
-
-let initOperator = null;
-let initOperand = null;
-let displayValue = '0';
+let firstOperand = null;
+let secondOperand = null;
+let firstOperator = null;
+let secondOperator = null;
+let displayValue = '';
 // const buttons = document.querySelector('button');
 const buttons = document.querySelectorAll('.operand');
 const display = document.querySelector('.display');
 
-function updateDisplay(){
+function updateDisplay(displayValue){
   display.innerText = displayValue;
 }
-
-updateDisplay();
-
-
 
 function buttonClick() {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', () => { if (buttons[i].classList.contains('operand')) {
-      getOperand(buttons[i].value);
-      updateDisplay();}
+      getOperand(buttons[i].value);}
   })
   }
 }
 
-buttonClick();
-
-function getOperand(operand) {
-  if (initOperand !== null) {
-    return 'init operand is not null';
+function getOperand(operandValue) {
+  displayValue += operandValue;
+  updateDisplay(displayValue);
   }
-  else if (initOperand === null && operand !== null) {
-    displayValue += operand;
-  }
-}
 
 
 function operate(a, b, operator) {
@@ -54,7 +32,6 @@ function operate(a, b, operator) {
   a = Number(a);
   b = Number(b);
   
-  console.log(typeof(a));
   if (operator === '+') {
       return a + b;
   }
@@ -72,10 +49,7 @@ function operate(a, b, operator) {
   }
 }
 
-console.log(operate(10, 2, '/'));
-
-/* 
 window.onload = () => {
-  code to load clear calc on window load
+  updateDisplay(DEFAULT_VALUE);
+  buttonClick();
 }
-*/
