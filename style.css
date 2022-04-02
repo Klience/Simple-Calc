@@ -12,7 +12,6 @@
   grid-template-columns: repeat(4, 100px);
   grid-template-rows: minmax(100px, auto) repeat(5, 80px);
   gap: 5px;
-  /* border: 2px solid red; */
 }
 
 .display {
