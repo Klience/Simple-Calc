@@ -1,0 +1,25 @@
+#calc {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: minmax(100px, auto) repeat(3, 100px);
+  gap: 5px;
+  border: 2px solid red;
+}
+
+.display {
+  grid-column: 1 / -1;
+  background-color: #b2b9b7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+}
