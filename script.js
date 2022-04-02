@@ -1,9 +1,9 @@
 const DEFAULT_VALUE = '0';
 
-let firstOperand = null;
-let secondOperand = null;
-let firstOperator = null;
-let secondOperator = null;
+let firstOperand = '';
+let secondOperand = '';
+let firstOperator = '';
+let secondOperator = '';
 let displayValue = '';
 
 const buttons = document.querySelectorAll('button');
@@ -16,15 +16,18 @@ function updateDisplay(displayValue){
 function buttonClick() {
   for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', () => {
+      
       if (buttons[i].classList.contains('operand')) {
         getOperand(buttons[i].value);}
+      
       else if (buttons[i].classList.contains('clear')) {
-        displayValue = '';
-        updateDisplay(DEFAULT_VALUE);
+        clearDisplay();
       }
+      
       else if (buttons[i].classList.contains('operator')) {
-        console.log(buttons[i].value);
+       // getOperator(buttons[i].value);
       }
+        
       else if (buttons[i].classList.contains('sign')) {
         console.log(buttons[i].value);
       }
@@ -39,10 +42,15 @@ function buttonClick() {
 }
 
 function getOperand(operandValue) {
-  displayValue += operandValue;
-  updateDisplay(displayValue);
-  }
+    firstOperand += operandValue;
+    updateDisplay(firstOperand);
+}
 
+function clearDisplay() {
+  updateDisplay(DEFAULT_VALUE);
+  firstOperand = '';
+  secondOperand = '';
+}
 
 function operate(a, b, operator) {
   
