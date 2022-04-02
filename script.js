@@ -42,9 +42,21 @@ function buttonClick() {
 }
 
 function getOperand(operandValue) {
+  if (firstOperand === '') {
+    firstOperand += operandValue;
+  }
+  else if (firstOperand !== '') {
+    firstOperand += operandValue;
+  }
+  updateDisplay(firstOperand);
+}
+
+/*
+function getOperand(operandValue) {
     firstOperand += operandValue;
     updateDisplay(firstOperand);
 }
+*/
 
 function clearDisplay() {
   updateDisplay(DEFAULT_VALUE);
