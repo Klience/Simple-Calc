@@ -37,3 +37,19 @@ button {
 .operator, .clear, .sign, .percent, .equals {
   box-shadow: 1px 1px 2px 1px rgba(0, 0, 255, .2);
 }
+
+.operator:active {
+  background-color: rgba(0, 0, 255, .2);
+}
+
+
+/*
+
+When A is '' && no sign chosen => inputA
+When A is not '' and a sign was chosen => inputB
+When A is '' cannot choose a sign
+When A is not '' a sign was chosen and B is not '' => operate(a, b, op)
+
+
+
+*/

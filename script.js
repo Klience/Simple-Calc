@@ -5,6 +5,7 @@ let secondOperand = '';
 let firstOperator = '';
 let secondOperator = '';
 let displayValue = '';
+let result = '';
 
 const buttons = document.querySelectorAll('button');
 const display = document.querySelector('.display');
@@ -18,14 +19,13 @@ function buttonClick() {
     buttons[i].addEventListener('click', () => {
       
       if (buttons[i].classList.contains('operand')) {
-        getOperand(buttons[i].value);}
-      
-      else if (buttons[i].classList.contains('clear')) {
-        clearDisplay();
+        getOperand(buttons[i].value);
       }
-      
+      else if (buttons[i].classList.contains('reset')) {
+        resetCalc();
+      }
       else if (buttons[i].classList.contains('operator')) {
-       // getOperator(buttons[i].value);
+        getOperator(buttons[i].value);
       }
         
       else if (buttons[i].classList.contains('sign')) {
@@ -42,26 +42,45 @@ function buttonClick() {
 }
 
 function getOperand(operandValue) {
-  if (firstOperand === '') {
-    firstOperand += operandValue;
-  }
-  else if (firstOperand !== '') {
-    firstOperand += operandValue;
-  }
-  updateDisplay(firstOperand);
-}
-
-/*
-function getOperand(operandValue) {
-    firstOperand += operandValue;
+  if (firstOperator === '') {
+    if (firstOperand === '') {
+      firstOperand = operandValue;
+    }
+    else if (firstOperand !== '') {
+      firstOperand += operandValue;
+    }
     updateDisplay(firstOperand);
+  }
+    
+  else if (firstOperator !== '') {
+    if (secondOperand === '') {
+      secondOperand = operandValue;
+    }
+    else if (secondOperand !== '') {
+      secondOperand += operandValue;
+    }
+    updateDisplay(secondOperand);
+  }
 }
-*/
 
-function clearDisplay() {
+function getOperator(operatorValue) {
+  if (firstOperand === '') {
+    return;
+  }
+    // check another if condition to account for second number?
+  else if (firstOperand !== '' && secondOperand === '') {
+    firstOperator = operatorValue;
+  }
+  console.log(firstOperator);
+  operate(firstOperand, secondOperand, firstOperator);
+}
+
+function resetCalc() {
   updateDisplay(DEFAULT_VALUE);
   firstOperand = '';
   secondOperand = '';
+  firstOperator = '';
+  secondOperator = '';
 }
 
 function operate(a, b, operator) {
@@ -70,20 +89,21 @@ function operate(a, b, operator) {
   b = Number(b);
   
   if (operator === '+') {
-      return a + b;
+    result = a + b;
   }
   else if (operator === '-') {
-    return a - b;
+    result = a - b;
   }
   else if (operator === '*') {
-    return a * b;
+    result = a * b;
   }
   else if (operator === '/') {
     if (a === 0 && b === 0) {
-      return "0 / 0 = 0";
+      result = "0 / 0 = 0";
     }
-    else return a / b;
+    else result = a / b;
   }
+  updateDisplay(result);
 }
 
 window.onload = () => {
